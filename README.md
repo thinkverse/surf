@@ -17,6 +17,10 @@ Surf, the opinionated Software as a Service Starter Kit that can help you build 
  - [Voyager Admin](https://wave.devdojo.com/docs/features/admin)
  - [Customizable Themes](https://wave.devdojo.com/docs/features/themes)
 
+## Deployment Issues
+
+Surf has not been tested with DigitalOceans APP platform. If you are using Surf on DigitalOcean, don't be surprised if you experience issues. Docker has also not been tested and is not recommended.
+
 ## Installation
 
 To install Surf, you'll want to clone or download this repo:

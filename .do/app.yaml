@@ -1,175 +1,82 @@
-name: wave
+name: surf
 services:
-- name: web
-  github:
-    repo: thedevdojo/wave
-    branch: main
-    deploy_on_push: true
-  run_command: php artisan migrate --force ; heroku-php-apache2 public/
-  envs:
-  - key: APP_NAME
-    scope: RUN_TIME
-    value:  Wave
-  - key: APP_ENV
-    scope: RUN_TIME
-    value: production
-  - key: APP_KEY
-    scope: RUN_TIME
-    value: "base64:UdAH2B63rlotjrkSSsj3Hppy4gbfr+OeHvtSdF9r9q8="
-  - key: APP_DEBUG
-    scope: RUN_TIME
-    value: "false"
-  - key: APP_URL
-    scope: RUN_TIME
-    value: ${APP_URL}
-  # LOG
-  - key: LOG_CHANNEL
-    scope: RUN_TIME
-    value: "stack"
-  - key: LOG_LEVEL
-    scope: RUN_TIME
-    value: "debug"
-  # DATABASE
-  - key: DB_CONNECTION
-    value: "pgsql"
-  - key: DB_HOST
-    value: ${wave-db.HOSTNAME}
-  - key: DB_PORT
-    value: ${wave-db.PORT}
-  - key: DB_DATABASE
-    value: ${wave-db.DATABASE}
-  - key: DB_USERNAME
-    value: ${wave-db.USERNAME}
-    type: SECRET
-  - key: DB_PASSWORD
-    value: ${wave-db.PASSWORD}
-    type: SECRET
-  # BROADCAST CACHE QUEUE
-  - key: BROADCAST_DRIVER
-    scope: RUN_TIME
-    value: "log"
-  - key: CACHE_DRIVER
-    scope: RUN_TIME
-    value: "file"
-  - key: QUEUE_CONNECTION
-    scope: RUN_TIME
-    value: "sync"
-  - key: SESSION_DRIVER
-    scope: RUN_TIME
-    value: "file"
-  - key: SESSION_LIFETIME
-    scope: RUN_TIME
-    value: "120"
-  # MEMCACHE
-  - key: MEMCACHED_HOST
-    scope: RUN_TIME
-    value: "127.0.0.1"
-  # REDIS
-  - key: REDIS_HOST
-    scope: RUN_TIME
-    value: "127.0.0.1"
-  - key: REDIS_PASSWORD
-    scope: RUN_TIME
-    value: "null"
-  - key: REDIS_PORT
-    scope: RUN_TIME
-    value: "6379"
-  # MAIL
-  - key: MAIL_MAILER
-    scope: RUN_TIME
-    value: "smtp"
-  - key: MAIL_HOST
-    scope: RUN_TIME
-    value: "mailhog"
-  - key: MAIL_PORT
-    scope: RUN_TIME
-    value: "1025"
-  - key: MAIL_USERNAME
-    scope: RUN_TIME
-    value: "null"
-  - key: MAIL_PASSWORD
-    scope: RUN_TIME
-    value: "null"
-  - key: key
-    scope: RUN_TIME
-    value: "null"
-  - key: MAIL_ENCRYPTION
-    scope: RUN_TIME
-    value: "null"
-  - key: MAIL_FROM_ADDRESS
-    scope: RUN_TIME
-    value: "null"
-  - key: MAIL_FROM_NAME
-    scope: RUN_TIME
-    value: "${APP_NAME}"
-  # Begin of DO VARS
-  - key: DO_SPACES
-    scope: RUN_TIME
-    value: "false"
-  - key: DO_SPACES_KEY
-    scope: RUN_TIME
-    value: "YOUR_DO_SPACES_KEY"
-    type: SECRET
-  - key: DO_SPACES_SECRET
-    scope: RUN_TIME
-    value: "YOUR_DO_SPACES_SECRET"
-    type: SECRET
-  - key: DO_SPACES_ENDPOINT
-    scope: RUN_TIME
-    value: "YOUR_DO_SPACES_ENDPOINT"
-  - key: DO_SPACES_REGION
-    scope: RUN_TIME
-    value: "YOUR_DO_SPACES_REGION"
-  - key: DO_SPACES_BUCKET
-    scope: RUN_TIME
-    value: "YOUR_DO_SPACES_BUCKET"
-databases:
-- engine: PG
-  name: wave-db
-  num_nodes: 1
-  size: db-s-dev-database
-  version: "12"
+  - name: web
+    github:
+      repo: thinkverse/surf
+      branch: main
+      deploy_on_push: true
+      run_command: php artisan migrate --force ; heroku-php-apache2 public/
+    envs:
+      - key: APP_URL
+        value: ${APP_URL}
+      - key: APP_ENV
+        value: "production"
+      - key: APP_KEY
+        value: "base64:zexFqn1eQjw1Weqx1Qp6YFX6yloRsoElqxWbSJv39N4="
+        type: SECRET
+      - key: LOG_CHANNEL
+        scope: RUN_TIME
+        value: "stack"
+      - key: LOG_LEVEL
+        scope: RUN_TIME
+        value: "debug"
+      - key: DB_CONNECTION
+        value: "pgsql"
+      - key: DATABASE_URL
+        value: ${db.DATABASE_URL}
+      - key: DB_HOST
+        value: ${db.HOSTNAME}
+      - key: DB_PORT
+        value: ${db.PORT}
+      - key: DB_DATABASE
+        value: ${db.DATABASE}
+      - key: DB_USERNAME
+        value: ${db.USERNAME}
+      - key: DB_PASSWORD
+        value: ${db.PASSWORD}
+    databases:
+      - name: db
 jobs:
-- name: migrate
-  kind: POST_DEPLOY
-  github:
-    repo: thedevdojo/wave
-    branch: main
-    deploy_on_push: true
-  run_command: php artisan migrate --seed ; php artisan storage:link
-  envs:
-  - key: APP_NAME
-    scope: RUN_TIME
-    value:  Wave
-  - key: APP_ENV
-    scope: RUN_TIME
-    value: production
-  - key: APP_KEY
-    scope: RUN_TIME
-    value: "base64:UdAH2B63rlotjrkSSsj3Hppy4gbfr+OeHvtSdF9r9q8="
-  - key: APP_DEBUG
-    scope: RUN_TIME
-    value: "false"
-  - key: APP_URL
-    scope: RUN_TIME
-    value: ${APP_URL}
-  - key: LOG_CHANNEL
-    scope: RUN_TIME
-    value: "stack"
-  - key: LOG_LEVEL
-    scope: RUN_TIME
-    value: "debug"
-  - key: DB_CONNECTION
-    value: "pgsql"
-  - key: DB_HOST
-    value: ${wave-db.HOSTNAME}
-  - key: DB_PORT
-    value: ${wave-db.PORT}
-  - key: DB_DATABASE
-    value: ${wave-db.DATABASE}
-  - key: DB_USERNAME
-    value: ${wave-db.USERNAME}
-    type: SECRET
-  - key: DB_PASSWORD
-    value: ${wave-db.PASSWORD}
-    type: SECRET
+  - name: migrate
+    kind: POST_DEPLOY
+    github:
+      repo: thinkverse/surf
+      branch: main
+      deploy_on_push: true
+    run_command: php artisan migrate --seed ; php artisan storage:link
+    envs:
+      - key: APP_NAME
+        scope: RUN_TIME
+        value: Suft
+      - key: APP_ENV
+        scope: RUN_TIME
+        value: production
+      - key: APP_KEY
+        scope: RUN_TIME
+        value: "base64:zexFqn1eQjw1Weqx1Qp6YFX6yloRsoElqxWbSJv39N4="
+      - key: APP_DEBUG
+        scope: RUN_TIME
+        value: "false"
+      - key: APP_URL
+        scope: RUN_TIME
+        value: ${APP_URL}
+      - key: LOG_CHANNEL
+        scope: RUN_TIME
+        value: "stack"
+      - key: LOG_LEVEL
+        scope: RUN_TIME
+        value: "debug"
+      - key: DB_CONNECTION
+        value: "pgsql"
+      - key: DB_HOST
+        value: ${db.HOSTNAME}
+      - key: DB_PORT
+        value: ${db.PORT}
+      - key: DB_DATABASE
+        value: ${db.DATABASE}
+      - key: DB_USERNAME
+        value: ${db.USERNAME}
+        type: SECRET
+      - key: DB_PASSWORD
+        value: ${db.PASSWORD}
+        type: SECRET
