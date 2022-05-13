@@ -52,7 +52,10 @@
             "dont-discover": [],
             "providers" : [
                 "Wave\\WaveServiceProvider"
-            ]
+            ],
+            "aliases" : {
+                "Wave": "Wave\\Support\\Facades\\Wave"
+            }
         }
     },
     "scripts": {

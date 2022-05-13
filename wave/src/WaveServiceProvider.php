@@ -3,24 +3,17 @@
 namespace Wave;
 
 use Illuminate\Contracts\Events\Dispatcher;
-use Illuminate\Foundation\AliasLoader;
-use Illuminate\Routing\Router;
-use Illuminate\Support\ServiceProvider;
-use Wave\Facades\Wave as WaveFacade;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 
 class WaveServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $loader = AliasLoader::getInstance();
-        $loader->alias('Wave', WaveFacade::class);
-
-        $this->app->singleton('wave', function () {
-            return new Wave();
-        });
+        $this->app->singleton('wave', Wave::class);
 
         $this->loadHelpers();
 

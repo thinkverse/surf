@@ -1,9 +1,13 @@
 <?php
 
-namespace Wave\Facades;
+namespace Wave\Support\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
+/**
+ * @method static void routes()
+ * @method static void api()
+ */
 class Wave extends Facade
 {
     /**
