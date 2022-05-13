@@ -7,9 +7,6 @@ Route::impersonate();
 Route::get('/', '\Wave\Http\Controllers\HomeController@index')->name('wave.home');
 Route::get('@{username}', '\Wave\Http\Controllers\ProfileController@index')->name('wave.profile');
 
-// Documentation routes
-Route::view('docs/{page?}', 'docs::index')->where('page', '(.*)');
-
 // Additional Auth Routes
 Route::get('logout', '\Wave\Http\Controllers\Auth\LoginController@logout')->name('wave.logout');
 Route::get('user/verify/{verification_code}', '\Wave\Http\Controllers\Auth\RegisterController@verify')->name('verify');

@@ -8,7 +8,6 @@ dataset('authroutes', function () {
         '/blog',
         '/blog/category-1',
         '/blog/category-1/best-ways-to-market-your-application',
-        '/docs/welcome',
         '/admin/announcements',
         '/admin/announcements/create',
         '/admin/announcements/1',
