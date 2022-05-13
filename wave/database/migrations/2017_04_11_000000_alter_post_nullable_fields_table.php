@@ -2,9 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-class AlterPostNullableFieldsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +14,7 @@ class AlterPostNullableFieldsTable extends Migration
      */
     public function up()
     {
-        $platform = \DB::getDoctrineSchemaManager()->getDatabasePlatform();
+        $platform = DB::getDoctrineSchemaManager()->getDatabasePlatform();
         $platform->registerDoctrineTypeMapping('enum', 'string');
 
         Schema::table('posts', function (Blueprint $table) {
@@ -36,4 +37,4 @@ class AlterPostNullableFieldsTable extends Migration
             $table->text('meta_keywords')->change();
         });
     }
-}
+};

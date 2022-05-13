@@ -1,10 +1,9 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeVoyagerThemesTableName extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -27,4 +26,4 @@ class ChangeVoyagerThemesTableName extends Migration
         Schema::rename('themes', 'voyager_themes');
         Schema::rename('theme_options', 'voyager_theme_options');
     }
-}
+};
