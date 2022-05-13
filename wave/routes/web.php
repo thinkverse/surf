@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::impersonate();
 
 Route::get('/', '\Wave\Http\Controllers\HomeController@index')->name('wave.home');
-Route::get('@{username}', '\Wave\Http\Controllers\ProfileController@index')->name('wave.profile')->middleware('verified');
+Route::get('@{username}', '\Wave\Http\Controllers\ProfileController@index')->name('wave.profile');
 
 // Additional Auth Routes
 Route::get('logout', '\Wave\Http\Controllers\Auth\LoginController@logout')->name('wave.logout');
