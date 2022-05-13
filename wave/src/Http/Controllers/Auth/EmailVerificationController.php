@@ -10,7 +10,7 @@ final class EmailVerificationController extends Controller
 {
     public function notice()
     {
-        return view('wave::verify-email');
+        return view('theme::auth.verify-email');
     }
 
     public function send(Request $request)

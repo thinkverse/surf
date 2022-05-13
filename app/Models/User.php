@@ -20,8 +20,6 @@ class User extends Authenticatable
         'email',
         'username',
         'password',
-        'verification_code',
-        'verified',
         'trial_ends_at',
         'email_verified_at',
     ];

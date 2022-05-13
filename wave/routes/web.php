@@ -11,13 +11,13 @@ Route::get('@{username}', '\Wave\Http\Controllers\ProfileController@index')->nam
 Route::get('logout', '\Wave\Http\Controllers\Auth\LoginController@logout')->name('wave.logout');
 Route::post('register/complete', '\Wave\Http\Controllers\Auth\RegisterController@complete')->name('wave.register-complete');
 
-Route::get('user/email/verify', '\Wave\Http\Controllers\Auth\EmailVerificationController@send')
+Route::post('user/email/verify', '\Wave\Http\Controllers\Auth\EmailVerificationController@send')
     ->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-Route::get('user/verify', '\Wave\Http\Controllers\Auth\EmailVerificationController@notice')
+Route::get('user/email/verify', '\Wave\Http\Controllers\Auth\EmailVerificationController@notice')
     ->middleware('auth')->name('verification.notice');
 
-Route::get('user/verify/{id}/{hash}', '\Wave\Http\Controllers\Auth\EmailVerificationController@verify')
+Route::get('user/email/verify/{id}/{hash}', '\Wave\Http\Controllers\Auth\EmailVerificationController@verify')
     ->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::get('blog', '\Wave\Http\Controllers\BlogController@index')->name('wave.blog');

@@ -28,9 +28,8 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         'email',
         'username',
         'password',
-        'verification_code',
-        'verified',
         'trial_ends_at',
+        'email_verified_at',
     ];
 
     /**
@@ -49,6 +48,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
      * @var array<string, string>
      */
     protected $casts = [
+        'email_verified_at' => 'datetime',
         'trial_ends_at' => 'datetime',
     ];
 

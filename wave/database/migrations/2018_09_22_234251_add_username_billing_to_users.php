@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('card_brand')->nullable();
             $table->string('card_last_four')->nullable();
             $table->dateTime('trial_ends_at')->nullable();
-            $table->string('verification_code')->nullable();
-            $table->boolean('verified')->nullable();
         });
     }
 
@@ -38,8 +36,6 @@ return new class extends Migration
             $table->dropColumn('card_brand');
             $table->dropColumn('card_last_four');
             $table->dropColumn('trial_ends_at');
-            $table->dropColumn('verification_code');
-            $table->dropColumn('verified');
         });
     }
 };
