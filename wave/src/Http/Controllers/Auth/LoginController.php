@@ -39,8 +39,9 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function username(){
-        if(setting('auth.email_or_username')){
+    public function username()
+    {
+        if (setting('auth.email_or_username')) {
             return setting('auth.email_or_username');
         }
 
@@ -54,9 +55,10 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        if(setting('auth.verify_email') && !$user->verified){
-            $this->guard()->logout();
-            return redirect()->back()->with(['message' => 'Please verify your email before logging into your account.', 'message_type' => 'warning']);
+        if (setting('auth.verify_email') && !$user->hasVerifiedEmail()) {
+            return redirect()
+                ->route('verification.notice')
+                ->with(['message' => 'Please verify your email before continuing.', 'message_type' => 'warning']);
         }
     }
 
@@ -73,11 +75,12 @@ class LoginController extends Controller
         $this->clearLoginAttempts($request);
 
         return $this->authenticated($request, $this->guard()->user())
-                ?: redirect()->intended($this->redirectPath())->with(['message' => 'Successfully logged in.', 'message_type' => 'success']);
+            ?: redirect()->intended($this->redirectPath())->with(['message' => 'Successfully logged in.', 'message_type' => 'success']);
     }
 
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
         return redirect(route('wave.home'));
     }
