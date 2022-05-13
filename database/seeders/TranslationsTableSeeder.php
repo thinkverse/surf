@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class TranslationsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +14,11 @@ class TranslationsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        DB::table('translations')->delete();
 
-        \DB::table('translations')->delete();
-        
-        \DB::table('translations')->insert(array (
-            0 => 
-            array (
+        DB::table('translations')->insert(array(
+            0 =>
+            array(
                 'id' => 1,
                 'table_name' => 'data_types',
                 'column_name' => 'display_name_singular',
@@ -30,8 +28,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            1 => 
-            array (
+            1 =>
+            array(
                 'id' => 2,
                 'table_name' => 'data_types',
                 'column_name' => 'display_name_singular',
@@ -41,8 +39,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            2 => 
-            array (
+            2 =>
+            array(
                 'id' => 3,
                 'table_name' => 'data_types',
                 'column_name' => 'display_name_singular',
@@ -52,8 +50,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            3 => 
-            array (
+            3 =>
+            array(
                 'id' => 4,
                 'table_name' => 'data_types',
                 'column_name' => 'display_name_singular',
@@ -63,8 +61,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            4 => 
-            array (
+            4 =>
+            array(
                 'id' => 5,
                 'table_name' => 'data_types',
                 'column_name' => 'display_name_singular',
@@ -74,8 +72,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            5 => 
-            array (
+            5 =>
+            array(
                 'id' => 6,
                 'table_name' => 'data_types',
                 'column_name' => 'display_name_singular',
@@ -85,8 +83,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            6 => 
-            array (
+            6 =>
+            array(
                 'id' => 7,
                 'table_name' => 'data_types',
                 'column_name' => 'display_name_plural',
@@ -96,8 +94,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            7 => 
-            array (
+            7 =>
+            array(
                 'id' => 8,
                 'table_name' => 'data_types',
                 'column_name' => 'display_name_plural',
@@ -107,8 +105,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            8 => 
-            array (
+            8 =>
+            array(
                 'id' => 9,
                 'table_name' => 'data_types',
                 'column_name' => 'display_name_plural',
@@ -118,8 +116,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            9 => 
-            array (
+            9 =>
+            array(
                 'id' => 10,
                 'table_name' => 'data_types',
                 'column_name' => 'display_name_plural',
@@ -129,8 +127,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            10 => 
-            array (
+            10 =>
+            array(
                 'id' => 11,
                 'table_name' => 'data_types',
                 'column_name' => 'display_name_plural',
@@ -140,8 +138,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            11 => 
-            array (
+            11 =>
+            array(
                 'id' => 12,
                 'table_name' => 'data_types',
                 'column_name' => 'display_name_plural',
@@ -151,8 +149,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            12 => 
-            array (
+            12 =>
+            array(
                 'id' => 13,
                 'table_name' => 'categories',
                 'column_name' => 'slug',
@@ -162,8 +160,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            13 => 
-            array (
+            13 =>
+            array(
                 'id' => 14,
                 'table_name' => 'categories',
                 'column_name' => 'name',
@@ -173,8 +171,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            14 => 
-            array (
+            14 =>
+            array(
                 'id' => 15,
                 'table_name' => 'categories',
                 'column_name' => 'slug',
@@ -184,8 +182,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            15 => 
-            array (
+            15 =>
+            array(
                 'id' => 16,
                 'table_name' => 'categories',
                 'column_name' => 'name',
@@ -195,8 +193,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            16 => 
-            array (
+            16 =>
+            array(
                 'id' => 17,
                 'table_name' => 'pages',
                 'column_name' => 'title',
@@ -206,8 +204,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            17 => 
-            array (
+            17 =>
+            array(
                 'id' => 18,
                 'table_name' => 'pages',
                 'column_name' => 'slug',
@@ -217,8 +215,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            18 => 
-            array (
+            18 =>
+            array(
                 'id' => 19,
                 'table_name' => 'pages',
                 'column_name' => 'body',
@@ -229,8 +227,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            19 => 
-            array (
+            19 =>
+            array(
                 'id' => 20,
                 'table_name' => 'menu_items',
                 'column_name' => 'title',
@@ -240,8 +238,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            20 => 
-            array (
+            20 =>
+            array(
                 'id' => 21,
                 'table_name' => 'menu_items',
                 'column_name' => 'title',
@@ -251,8 +249,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            21 => 
-            array (
+            21 =>
+            array(
                 'id' => 22,
                 'table_name' => 'menu_items',
                 'column_name' => 'title',
@@ -262,8 +260,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            22 => 
-            array (
+            22 =>
+            array(
                 'id' => 23,
                 'table_name' => 'menu_items',
                 'column_name' => 'title',
@@ -273,8 +271,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            23 => 
-            array (
+            23 =>
+            array(
                 'id' => 24,
                 'table_name' => 'menu_items',
                 'column_name' => 'title',
@@ -284,8 +282,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            24 => 
-            array (
+            24 =>
+            array(
                 'id' => 25,
                 'table_name' => 'menu_items',
                 'column_name' => 'title',
@@ -295,8 +293,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            25 => 
-            array (
+            25 =>
+            array(
                 'id' => 26,
                 'table_name' => 'menu_items',
                 'column_name' => 'title',
@@ -306,8 +304,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            26 => 
-            array (
+            26 =>
+            array(
                 'id' => 27,
                 'table_name' => 'menu_items',
                 'column_name' => 'title',
@@ -317,8 +315,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            27 => 
-            array (
+            27 =>
+            array(
                 'id' => 28,
                 'table_name' => 'menu_items',
                 'column_name' => 'title',
@@ -328,8 +326,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            28 => 
-            array (
+            28 =>
+            array(
                 'id' => 29,
                 'table_name' => 'menu_items',
                 'column_name' => 'title',
@@ -339,8 +337,8 @@ class TranslationsTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            29 => 
-            array (
+            29 =>
+            array(
                 'id' => 30,
                 'table_name' => 'menu_items',
                 'column_name' => 'title',
@@ -351,7 +349,5 @@ class TranslationsTableSeeder extends Seeder
                 'updated_at' => '2017-11-21 16:23:23',
             ),
         ));
-        
-        
     }
 }

@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class RolesTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +14,11 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('roles')->delete();
 
-
-        \DB::table('roles')->delete();
-
-        \DB::table('roles')->insert(array (
+        DB::table('roles')->insert(array(
             0 =>
-            array (
+            array(
                 'id' => 1,
                 'name' => 'admin',
                 'display_name' => 'Admin User',
@@ -28,7 +26,7 @@ class RolesTableSeeder extends Seeder
                 'updated_at' => '2017-11-21 16:23:22',
             ),
             1 =>
-            array (
+            array(
                 'id' => 2,
                 'name' => 'trial',
                 'display_name' => 'Free Trial',
@@ -36,7 +34,7 @@ class RolesTableSeeder extends Seeder
                 'updated_at' => '2017-11-21 16:23:22',
             ),
             2 =>
-            array (
+            array(
                 'id' => 3,
                 'name' => 'basic',
                 'display_name' => 'Basic Plan',
@@ -44,7 +42,7 @@ class RolesTableSeeder extends Seeder
                 'updated_at' => '2018-07-03 17:28:44',
             ),
             3 =>
-            array (
+            array(
                 'id' => 4,
                 'name' => 'pro',
                 'display_name' => 'Pro Plan',
@@ -52,7 +50,7 @@ class RolesTableSeeder extends Seeder
                 'updated_at' => '2018-07-03 17:28:38',
             ),
             4 =>
-            array (
+            array(
                 'id' => 5,
                 'name' => 'premium',
                 'display_name' => 'Premium Plan',
@@ -60,7 +58,7 @@ class RolesTableSeeder extends Seeder
                 'updated_at' => '2018-07-03 17:28:32',
             ),
             5 =>
-            array (
+            array(
                 'id' => 6,
                 'name' => 'cancelled',
                 'display_name' => 'Cancelled User',
@@ -68,7 +66,5 @@ class RolesTableSeeder extends Seeder
                 'updated_at' => '2018-07-03 17:28:32',
             ),
         ));
-
-
     }
 }

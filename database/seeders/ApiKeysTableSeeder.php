@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ApiKeysTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,11 +14,6 @@ class ApiKeysTableSeeder extends Seeder
      */
     public function run()
     {
-        
-
-        \DB::table('api_keys')->delete();
-        
-        
-        
+        DB::table('api_keys')->delete();
     }
 }

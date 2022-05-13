@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class MenuItemsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +14,11 @@ class MenuItemsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('menu_items')->delete();
 
-
-        \DB::table('menu_items')->delete();
-
-        \DB::table('menu_items')->insert(array (
+        DB::table('menu_items')->insert(array(
             0 =>
-            array (
+            array(
                 'id' => 1,
                 'menu_id' => 1,
                 'title' => 'Dashboard',
@@ -36,7 +34,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             1 =>
-            array (
+            array(
                 'id' => 2,
                 'menu_id' => 1,
                 'title' => 'Media',
@@ -52,7 +50,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             2 =>
-            array (
+            array(
                 'id' => 3,
                 'menu_id' => 1,
                 'title' => 'Posts',
@@ -68,7 +66,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             3 =>
-            array (
+            array(
                 'id' => 4,
                 'menu_id' => 1,
                 'title' => 'Users',
@@ -84,7 +82,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             4 =>
-            array (
+            array(
                 'id' => 5,
                 'menu_id' => 1,
                 'title' => 'Categories',
@@ -100,7 +98,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             5 =>
-            array (
+            array(
                 'id' => 6,
                 'menu_id' => 1,
                 'title' => 'Pages',
@@ -116,7 +114,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             6 =>
-            array (
+            array(
                 'id' => 7,
                 'menu_id' => 1,
                 'title' => 'Roles',
@@ -132,7 +130,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             7 =>
-            array (
+            array(
                 'id' => 8,
                 'menu_id' => 1,
                 'title' => 'Tools',
@@ -148,7 +146,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             8 =>
-            array (
+            array(
                 'id' => 9,
                 'menu_id' => 1,
                 'title' => 'Menu Builder',
@@ -164,7 +162,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             9 =>
-            array (
+            array(
                 'id' => 10,
                 'menu_id' => 1,
                 'title' => 'Database',
@@ -180,7 +178,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             10 =>
-            array (
+            array(
                 'id' => 11,
                 'menu_id' => 1,
                 'title' => 'Compass',
@@ -196,7 +194,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             11 =>
-            array (
+            array(
                 'id' => 13,
                 'menu_id' => 1,
                 'title' => 'Settings',
@@ -212,7 +210,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             12 =>
-            array (
+            array(
                 'id' => 14,
                 'menu_id' => 1,
                 'title' => 'Themes',
@@ -228,7 +226,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             13 =>
-            array (
+            array(
                 'id' => 15,
                 'menu_id' => 2,
                 'title' => 'Dashboard',
@@ -244,7 +242,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => 'null',
             ),
             14 =>
-            array (
+            array(
                 'id' => 16,
                 'menu_id' => 2,
                 'title' => 'Resources',
@@ -260,7 +258,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => '',
             ),
             15 =>
-            array (
+            array(
                 'id' => 19,
                 'menu_id' => 2,
                 'title' => 'Next Child',
@@ -276,7 +274,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => '',
             ),
             16 =>
-            array (
+            array(
                 'id' => 20,
                 'menu_id' => 2,
                 'title' => 'Next Child 2',
@@ -292,7 +290,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => '',
             ),
             17 =>
-            array (
+            array(
                 'id' => 21,
                 'menu_id' => 2,
                 'title' => 'Documentation',
@@ -308,7 +306,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => '',
             ),
             18 =>
-            array (
+            array(
                 'id' => 22,
                 'menu_id' => 2,
                 'title' => 'Videos',
@@ -324,7 +322,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => '',
             ),
             19 =>
-            array (
+            array(
                 'id' => 23,
                 'menu_id' => 2,
                 'title' => 'Support',
@@ -340,7 +338,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => '',
             ),
             20 =>
-            array (
+            array(
                 'id' => 25,
                 'menu_id' => 2,
                 'title' => 'Blog',
@@ -356,7 +354,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => '',
             ),
             21 =>
-            array (
+            array(
                 'id' => 26,
                 'menu_id' => 3,
                 'title' => 'Home',
@@ -372,7 +370,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => '',
             ),
             22 =>
-            array (
+            array(
                 'id' => 27,
                 'menu_id' => 3,
                 'title' => 'Features',
@@ -388,7 +386,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => '',
             ),
             23 =>
-            array (
+            array(
                 'id' => 28,
                 'menu_id' => 3,
                 'title' => 'Testimonials',
@@ -404,7 +402,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => '',
             ),
             24 =>
-            array (
+            array(
                 'id' => 29,
                 'menu_id' => 3,
                 'title' => 'Pricing',
@@ -420,7 +418,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => '',
             ),
             25 =>
-            array (
+            array(
                 'id' => 30,
                 'menu_id' => 1,
                 'title' => 'Announcements',
@@ -436,7 +434,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             26 =>
-            array (
+            array(
                 'id' => 31,
                 'menu_id' => 1,
                 'title' => 'BREAD',
@@ -452,7 +450,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             27 =>
-            array (
+            array(
                 'id' => 32,
                 'menu_id' => 1,
                 'title' => 'Plans',
@@ -468,7 +466,7 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
             28 =>
-            array (
+            array(
                 'id' => 33,
                 'menu_id' => 3,
                 'title' => 'Blog',
@@ -484,7 +482,5 @@ class MenuItemsTableSeeder extends Seeder
                 'parameters' => NULL,
             ),
         ));
-
-
     }
 }

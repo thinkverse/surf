@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DataTypesTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +14,11 @@ class DataTypesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        DB::table('data_types')->delete();
 
-        \DB::table('data_types')->delete();
-        
-        \DB::table('data_types')->insert(array (
-            0 => 
-            array (
+        DB::table('data_types')->insert(array(
+            0 =>
+            array(
                 'id' => 1,
                 'name' => 'posts',
                 'slug' => 'posts',
@@ -37,8 +35,8 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:22',
                 'updated_at' => '2017-11-21 16:23:22',
             ),
-            1 => 
-            array (
+            1 =>
+            array(
                 'id' => 2,
                 'name' => 'pages',
                 'slug' => 'pages',
@@ -55,8 +53,8 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:22',
                 'updated_at' => '2017-11-21 16:23:22',
             ),
-            2 => 
-            array (
+            2 =>
+            array(
                 'id' => 3,
                 'name' => 'users',
                 'slug' => 'users',
@@ -73,8 +71,8 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:22',
                 'updated_at' => '2018-06-22 20:29:47',
             ),
-            3 => 
-            array (
+            3 =>
+            array(
                 'id' => 4,
                 'name' => 'categories',
                 'slug' => 'categories',
@@ -91,8 +89,8 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:22',
                 'updated_at' => '2017-11-21 16:23:22',
             ),
-            4 => 
-            array (
+            4 =>
+            array(
                 'id' => 5,
                 'name' => 'menus',
                 'slug' => 'menus',
@@ -109,8 +107,8 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:22',
                 'updated_at' => '2017-11-21 16:23:22',
             ),
-            5 => 
-            array (
+            5 =>
+            array(
                 'id' => 6,
                 'name' => 'roles',
                 'slug' => 'roles',
@@ -127,8 +125,8 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:22',
                 'updated_at' => '2017-11-21 16:23:22',
             ),
-            6 => 
-            array (
+            6 =>
+            array(
                 'id' => 7,
                 'name' => 'announcements',
                 'slug' => 'announcements',
@@ -145,8 +143,8 @@ class DataTypesTableSeeder extends Seeder
                 'created_at' => '2018-05-20 21:08:14',
                 'updated_at' => '2018-05-20 21:08:14',
             ),
-            7 => 
-            array (
+            7 =>
+            array(
                 'id' => 8,
                 'name' => 'plans',
                 'slug' => 'plans',
@@ -164,7 +162,5 @@ class DataTypesTableSeeder extends Seeder
                 'updated_at' => '2018-07-03 04:50:28',
             ),
         ));
-        
-        
     }
 }

@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class WaveKeyValuesTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +14,11 @@ class WaveKeyValuesTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('wave_key_values')->delete();
 
-
-        \DB::table('wave_key_values')->delete();
-
-        \DB::table('wave_key_values')->insert(array (
+        DB::table('wave_key_values')->insert(array(
             0 =>
-            array (
+            array(
                 'id' => 10,
                 'type' => 'text_area',
                 'keyvalue_id' => 1,
@@ -29,7 +27,5 @@ class WaveKeyValuesTableSeeder extends Seeder
                 'value' => 'Hello I am the admin user. You can update this information in the edit profile section. Hope you enjoy using Wave.',
             ),
         ));
-
-
     }
 }

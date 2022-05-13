@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PlansTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +14,11 @@ class PlansTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('plans')->delete();
 
-
-        \DB::table('plans')->delete();
-
-        \DB::table('plans')->insert(array (
+        DB::table('plans')->insert(array(
             0 =>
-            array (
+            array(
                 'id' => 1,
                 'name' => 'Basic',
                 'slug' => 'basic',
@@ -35,7 +33,7 @@ class PlansTableSeeder extends Seeder
                 'updated_at' => '2018-07-03 17:17:24',
             ),
             1 =>
-            array (
+            array(
                 'id' => 2,
                 'name' => 'Premium',
                 'slug' => 'premium',
@@ -50,7 +48,7 @@ class PlansTableSeeder extends Seeder
                 'updated_at' => '2018-07-03 17:17:08',
             ),
             2 =>
-            array (
+            array(
                 'id' => 3,
                 'name' => 'Pro',
                 'slug' => 'pro',
@@ -65,7 +63,5 @@ class PlansTableSeeder extends Seeder
                 'updated_at' => '2018-08-22 22:26:19',
             ),
         ));
-
-
     }
 }

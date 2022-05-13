@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PagesTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +14,11 @@ class PagesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        DB::table('pages')->delete();
 
-        \DB::table('pages')->delete();
-        
-        \DB::table('pages')->insert(array (
-            0 => 
-            array (
+        DB::table('pages')->insert(array(
+            0 =>
+            array(
                 'id' => 1,
                 'author_id' => 1,
                 'title' => 'Hello World',
@@ -35,8 +33,8 @@ class PagesTableSeeder extends Seeder
                 'created_at' => '2017-11-21 16:23:23',
                 'updated_at' => '2017-11-21 16:23:23',
             ),
-            1 => 
-            array (
+            1 =>
+            array(
                 'id' => 2,
                 'author_id' => 1,
                 'title' => 'About',
@@ -53,7 +51,5 @@ class PagesTableSeeder extends Seeder
                 'updated_at' => '2018-03-30 03:04:51',
             ),
         ));
-        
-        
     }
 }

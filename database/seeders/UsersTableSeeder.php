@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UsersTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +14,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        DB::table('users')->delete();
 
-        \DB::table('users')->delete();
-        
-        \DB::table('users')->insert(array (
-            0 => 
-            array (
+        DB::table('users')->insert(array(
+            0 =>
+            array(
                 'id' => 1,
                 'role_id' => 1,
                 'name' => 'Wave Admin',
@@ -40,7 +38,5 @@ class UsersTableSeeder extends Seeder
                 'verified' => 1,
             ),
         ));
-        
-        
     }
 }

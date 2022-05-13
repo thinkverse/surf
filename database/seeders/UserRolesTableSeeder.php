@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UserRolesTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,11 +14,6 @@ class UserRolesTableSeeder extends Seeder
      */
     public function run()
     {
-        
-
-        \DB::table('user_roles')->delete();
-        
-        
-        
+        DB::table('user_roles')->delete();
     }
 }

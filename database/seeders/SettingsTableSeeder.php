@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class SettingsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +14,11 @@ class SettingsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('settings')->delete();
 
-
-        \DB::table('settings')->delete();
-
-        \DB::table('settings')->insert(array (
+        DB::table('settings')->insert(array(
             0 =>
-            array (
+            array(
                 'id' => 1,
                 'key' => 'site.title',
                 'display_name' => 'Site Title',
@@ -31,7 +29,7 @@ class SettingsTableSeeder extends Seeder
                 'group' => 'Site',
             ),
             1 =>
-            array (
+            array(
                 'id' => 2,
                 'key' => 'site.description',
                 'display_name' => 'Site Description',
@@ -42,7 +40,7 @@ class SettingsTableSeeder extends Seeder
                 'group' => 'Site',
             ),
             2 =>
-            array (
+            array(
                 'id' => 4,
                 'key' => 'site.google_analytics_tracking_id',
                 'display_name' => 'Google Analytics Tracking ID',
@@ -53,7 +51,7 @@ class SettingsTableSeeder extends Seeder
                 'group' => 'Site',
             ),
             3 =>
-            array (
+            array(
                 'id' => 6,
                 'key' => 'admin.title',
                 'display_name' => 'Admin Title',
@@ -64,7 +62,7 @@ class SettingsTableSeeder extends Seeder
                 'group' => 'Admin',
             ),
             4 =>
-            array (
+            array(
                 'id' => 7,
                 'key' => 'admin.description',
                 'display_name' => 'Admin Description',
@@ -75,7 +73,7 @@ class SettingsTableSeeder extends Seeder
                 'group' => 'Admin',
             ),
             5 =>
-            array (
+            array(
                 'id' => 8,
                 'key' => 'admin.loader',
                 'display_name' => 'Admin Loader',
@@ -86,7 +84,7 @@ class SettingsTableSeeder extends Seeder
                 'group' => 'Admin',
             ),
             6 =>
-            array (
+            array(
                 'id' => 9,
                 'key' => 'admin.icon_image',
                 'display_name' => 'Admin Icon Image',
@@ -97,10 +95,10 @@ class SettingsTableSeeder extends Seeder
                 'group' => 'Admin',
             ),
             7 =>
-            array (
+            array(
                 'id' => 10,
                 'key' => 'admin.google_analytics_client_id',
-            'display_name' => 'Google Analytics Client ID (used for admin dashboard)',
+                'display_name' => 'Google Analytics Client ID (used for admin dashboard)',
                 'value' => '',
                 'details' => '',
                 'type' => 'text',
@@ -108,7 +106,7 @@ class SettingsTableSeeder extends Seeder
                 'group' => 'Admin',
             ),
             8 =>
-            array (
+            array(
                 'id' => 11,
                 'key' => 'site.favicon',
                 'display_name' => 'Favicon',
@@ -119,7 +117,7 @@ class SettingsTableSeeder extends Seeder
                 'group' => 'Site',
             ),
             9 =>
-            array (
+            array(
                 'id' => 12,
                 'key' => 'auth.dashboard_redirect',
                 'display_name' => 'Homepage Redirect to Dashboard if Logged in',
@@ -130,7 +128,7 @@ class SettingsTableSeeder extends Seeder
                 'group' => 'Auth',
             ),
             10 =>
-            array (
+            array(
                 'id' => 13,
                 'key' => 'auth.email_or_username',
                 'display_name' => 'Users Login with Email or Username',
@@ -147,7 +145,7 @@ class SettingsTableSeeder extends Seeder
                 'group' => 'Auth',
             ),
             11 =>
-            array (
+            array(
                 'id' => 14,
                 'key' => 'auth.username_in_registration',
                 'display_name' => 'Username when Registering',
@@ -164,7 +162,7 @@ class SettingsTableSeeder extends Seeder
                 'group' => 'Auth',
             ),
             12 =>
-            array (
+            array(
                 'id' => 15,
                 'key' => 'auth.verify_email',
                 'display_name' => 'Verify Email during Sign Up',
@@ -175,7 +173,7 @@ class SettingsTableSeeder extends Seeder
                 'group' => 'Auth',
             ),
             13 =>
-            array (
+            array(
                 'id' => 16,
                 'key' => 'billing.card_upfront',
                 'display_name' => 'Require Credit Card Up Front',
@@ -190,7 +188,7 @@ class SettingsTableSeeder extends Seeder
                 'group' => 'Billing',
             ),
             14 =>
-            array (
+            array(
                 'id' => 17,
                 'key' => 'billing.trial_days',
                 'display_name' => 'Trial Days when No Credit Card Up Front',
@@ -201,7 +199,5 @@ class SettingsTableSeeder extends Seeder
                 'group' => 'Billing',
             ),
         ));
-
-
     }
 }

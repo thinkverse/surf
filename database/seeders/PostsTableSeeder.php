@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PostsTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +14,11 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('posts')->delete();
 
-
-        \DB::table('posts')->delete();
-
-        \DB::table('posts')->insert(array (
+        DB::table('posts')->insert(array(
             0 =>
-            array (
+            array(
                 'id' => 5,
                 'author_id' => 1,
                 'category_id' => 1,
@@ -56,7 +54,7 @@ class PostsTableSeeder extends Seeder
                 'updated_at' => '2018-03-26 02:13:05',
             ),
             1 =>
-            array (
+            array(
                 'id' => 6,
                 'author_id' => 1,
                 'category_id' => 1,
@@ -92,7 +90,7 @@ class PostsTableSeeder extends Seeder
                 'updated_at' => '2018-03-26 02:15:18',
             ),
             2 =>
-            array (
+            array(
                 'id' => 7,
                 'author_id' => 1,
                 'category_id' => 1,
@@ -128,7 +126,7 @@ class PostsTableSeeder extends Seeder
                 'updated_at' => '2018-03-26 02:24:43',
             ),
             3 =>
-            array (
+            array(
                 'id' => 8,
                 'author_id' => 1,
                 'category_id' => 2,
@@ -164,7 +162,7 @@ class PostsTableSeeder extends Seeder
                 'updated_at' => '2018-03-26 02:42:44',
             ),
             4 =>
-            array (
+            array(
                 'id' => 9,
                 'author_id' => 1,
                 'category_id' => 2,
@@ -200,7 +198,7 @@ class PostsTableSeeder extends Seeder
                 'updated_at' => '2018-03-26 02:56:38',
             ),
             5 =>
-            array (
+            array(
                 'id' => 10,
                 'author_id' => 1,
                 'category_id' => 1,
@@ -236,7 +234,5 @@ class PostsTableSeeder extends Seeder
                 'updated_at' => '2018-06-28 06:14:31',
             ),
         ));
-
-
     }
 }

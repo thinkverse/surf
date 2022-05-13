@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class VoyagerThemesTableSeeder extends Seeder
 {
-
     /**
      * Auto generated seed file
      *
@@ -14,13 +14,11 @@ class VoyagerThemesTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('themes')->delete();
 
-
-        \DB::table('themes')->delete();
-
-        \DB::table('themes')->insert(array (
+        DB::table('themes')->insert(array(
             0 =>
-            array (
+            array(
                 'id' => 1,
                 'name' => 'Tailwind Theme',
                 'folder' => 'tailwind',
@@ -30,7 +28,5 @@ class VoyagerThemesTableSeeder extends Seeder
                 'updated_at' => '2020-08-23 08:06:45',
             )
         ));
-
-
     }
 }
