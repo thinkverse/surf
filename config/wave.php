@@ -17,7 +17,6 @@ return [
 
 	'user_model' => \App\Models\User::class,
 	'show_docs' => env('WAVE_DOCS', true),
-    'dev_bar' => env('WAVE_BAR', false),
 
     'paddle' => [
         'vendor' => env('PADDLE_VENDOR_ID', ''),

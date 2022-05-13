@@ -44,7 +44,7 @@
     <!-- Styles -->
     <link href="{{ asset('themes/' . $theme->folder . '/css/app.css') }}" rel="stylesheet">
 </head>
-<body class="flex flex-col min-h-screen @if(Request::is('/')){{ 'bg-white' }}@else{{ 'bg-gray-50' }}@endif @if(config('wave.dev_bar')){{ 'pb-10' }}@endif">
+<body class="flex flex-col min-h-screen @if(Request::is('/')){{ 'bg-white' }}@else{{ 'bg-gray-50' }}@endif">
     @include('theme::partials.header')
 
     <main class="flex-grow overflow-x-hidden">
@@ -52,10 +52,6 @@
     </main>
 
     @include('theme::partials.footer')
-
-    @if(config('wave.dev_bar'))
-        @include('theme::partials.dev_bar')
-    @endif
 
     <!-- Full Screen Loader -->
     <div id="fullscreenLoader" class="fixed inset-0 top-0 left-0 z-50 flex flex-col items-center justify-center hidden w-full h-full bg-gray-900 opacity-50">
