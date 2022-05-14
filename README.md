@@ -29,7 +29,7 @@ To install Surf, you'll want to clone or download this repo:
 git clone https://github.com/thinkverse/surf.git project_name
 ```
 
-Next, we can install Surf with these **4 simple steps**:
+Next, we can install Surf with these **5 simple steps**:
 
 ### 1. Create a New Database
 
@@ -60,13 +60,26 @@ Following that, we'll need to install all composer dependencies through the foll
 composer install
 ```
 
-### 4. Update plans
+### 4. Update Paddle Plans
 
-We then update the plans to be created as per your Paddle account. 
+To make sure your plan IDs are up-to-date, you'll need to update the [PlansTableSeeder](database/seeders/PlansTableSeeder.php).
 
-To create plans, navigate to Catalogue » [Subscription Plans](https://sandbox-vendors.paddle.com/subscriptions/plans) on your Paddle account.
+To create a Paddle plan, navigate to your Paddle account and click on Catalogue » **Subscription Plans**.
 
-Update the `plan_id`, `price`, `trial_days`, etc. in the plans array in [PlansTableSeeder](database/seeders/PlansTableSeeder.php)
+<small>Use the [**sandbox-vendors.paddle.com**](https://sandbox-vendors.paddle.com) account for testing, and [**vendors.paddle.com**](https://vendors.paddle.com) account for production.</small>
+
+Update the `plan_id`, `price`, `trial_days`, etc. in the plans seeder array.
+
+```diff
+    'name' => 'Basic',
+    'slug' => 'basic',
+    'description' => 'Signup for the Basic User Plan to access all the basic features.',
+-   'plan_id' => '1',
++   'plan_id' => '12345',
+    'default' => 0,
+    'price' => '5',
+    'trial_days' => 0,
+```
 
 ### 5. Run Migrations and Seeds
 
