@@ -25,6 +25,7 @@ class WaveServiceProvider extends ServiceProvider
             \Wave\Http\Middleware\Cancelled::class,
         ];
 
+        $this->app->router->aliasMiddleware('verify_webhook', \Wave\Http\Middleware\VerifyPaddleWebhookMiddleware::class);
         $this->app->router->aliasMiddleware('token_api', \Wave\Http\Middleware\TokenMiddleware::class);
         $this->app->router->pushMiddlewareToGroup('web', \Wave\Http\Middleware\WaveMiddleware::class);
         $this->app->router->pushMiddlewareToGroup('web', \Wave\Http\Middleware\InstallMiddleware::class);

@@ -46,8 +46,7 @@ Route::get('p/{page}', [PageController::class, 'page']);
 Route::view('pricing', 'theme::pricing')->name('wave.pricing');
 
 /***** Billing Routes *****/
-Route::post('/billing/webhook', [WebhookController::class, 'handleWebhook']);
-Route::post('paddle/webhook', [SubscriptionController::class, 'hook']);
+Route::post('billing/webhook', [WebhookController::class, 'handleWebhook'])->middleware('verify_webhook');
 Route::post('checkout', [SubscriptionController::class, 'checkout'])->name('checkout');
 
 Route::group(['middleware' => 'wave'], function () {
