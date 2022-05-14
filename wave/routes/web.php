@@ -50,8 +50,6 @@ Route::post('/billing/webhook', [WebhookController::class, 'handleWebhook']);
 Route::post('paddle/webhook', [SubscriptionController::class, 'hook']);
 Route::post('checkout', [SubscriptionController::class, 'checkout'])->name('checkout');
 
-Route::get('test', [SubscriptionController::class, 'test']);
-
 Route::group(['middleware' => 'wave'], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('wave.dashboard');
 });
