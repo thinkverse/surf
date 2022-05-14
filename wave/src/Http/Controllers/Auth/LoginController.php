@@ -77,11 +77,4 @@ class LoginController extends Controller
         return $this->authenticated($request, $this->guard()->user())
             ?: redirect()->intended($this->redirectPath())->with(['message' => 'Successfully logged in.', 'message_type' => 'success']);
     }
-
-
-    public function logout()
-    {
-        Auth::logout();
-        return redirect(route('wave.home'));
-    }
 }
