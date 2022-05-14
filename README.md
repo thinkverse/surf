@@ -59,7 +59,16 @@ Following that, we'll need to install all composer dependencies through the foll
 ```php
 composer install
 ```
-### 4. Run Migrations and Seeds
+
+### 4. Update plans
+
+We then update the plans to be created as per your Paddle account. 
+
+To create plans, navigate to Catalogue » [Subscription Plans](https://sandbox-vendors.paddle.com/subscriptions/plans) on your Paddle account.
+
+Update the `plan_id`, `price`, `trial_days`, etc. in the plans array in [PlansTableSeeder](database/seeders/PlansTableSeeder.php)
+
+### 5. Run Migrations and Seeds
 
 We must migrate our database schema into our database, which we can accomplish by running the following command:
 
