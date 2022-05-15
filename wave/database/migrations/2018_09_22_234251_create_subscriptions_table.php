@@ -14,14 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('subscriptions', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->string('name');
-            $table->string('stripe_id');
-            $table->string('stripe_plan');
-            $table->integer('quantity');
-            $table->dateTime('trial_ends_at')->nullable();
-            $table->dateTime('ends_at')->nullable();
+            $table->id();
+            $table->unsignedBigInteger('subscription_id')->unique();
+            $table->foreignId('plan_id')->nullable()->constrained();
+            $table->foreignId('user_id')->nullable()->constrained();
+            $table->string('status')->nullable();
+            $table->string('update_url')->nullable();
+            $table->string('cancel_url')->nullable();
+            $table->timestamp('last_payment_at')->nullable();
+            $table->timestamp('next_payment_at')->nullable();
+            $table->timestamp('cancelled_at')->nullable();
             $table->timestamps();
         });
     }

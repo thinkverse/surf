@@ -15,8 +15,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('author_id');
+            $table->id();
+            $table->unsignedBigInteger('author_id');
             $table->string('title');
             $table->text('excerpt')->nullable();
             $table->text('body')->nullable();

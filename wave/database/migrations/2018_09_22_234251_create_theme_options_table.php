@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('voyager_themes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('folder')->unique();
-            $table->boolean('active')->default(0);
-            $table->string('version')->default('');
+        Schema::create('theme_options', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('theme_id')->constrained();
+            $table->string('key');
+            $table->text('value', 65535)->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('voyager_themes');
+        Schema::dropIfExists('theme_options');
     }
 };

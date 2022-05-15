@@ -15,8 +15,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('announcement_user', function (Blueprint $table) {
-            $table->integer('announcement_id')->unsigned()->index();
-            $table->bigInteger('user_id')->unsigned()->index();
+            $table->foreignId('announcement_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
         });
     }
 

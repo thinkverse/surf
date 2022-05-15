@@ -13,8 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('theme_options', function (Blueprint $table) {
-            $table->foreign('theme_id')->references('id')->on('themes')->onUpdate('RESTRICT')->onDelete('CASCADE');
+        Schema::create('announcements', function (Blueprint $table) {
+            $table->id();
+            $table->string('title')->default('');
+            $table->string('description');
+            $table->text('body', 65535);
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('theme_options', function (Blueprint $table) {
-            $table->dropForeign('theme_options_theme_id_foreign');
-        });
+        Schema::dropIfExists('announcements');
     }
 };

@@ -14,12 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('plans', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
+            $table->string('slug')->unique();
             $table->text('description', 65535)->nullable();
             $table->string('features');
-            $table->string('plan_id')->default('');
-            $table->bigInteger('role_id')->unsigned()->index('plans_role_id_foreign');
+            $table->unsignedBigInteger('plan_id');
+            $table->foreignId('role_id')->constrained();
             $table->boolean('default')->default(0);
             $table->string('price');
             $table->integer('trial_days')->default(0);

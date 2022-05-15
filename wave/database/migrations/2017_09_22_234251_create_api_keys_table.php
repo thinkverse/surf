@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('voyager_theme_options', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('theme_id')->unsigned()->index();
-            $table->string('key');
-            $table->text('value', 65535)->nullable();
+        Schema::create('api_keys', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('name');
+            $table->string('key', 60)->default('')->unique('api_tokens_token_unique');
+            $table->timestamp('last_used_at')->nullable();
             $table->timestamps();
+            $table->unique(['user_id', 'name']);
         });
     }
 
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('voyager_theme_options');
+        Schema::dropIfExists('api_keys');
     }
 };

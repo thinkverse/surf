@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('permissions', function (Blueprint $table) {
-            $table->integer('permission_group_id')->unsigned()->nullable();
+            $table->foreignId('permission_group_id')->nullable()->constrained();
         });
     }
     /**

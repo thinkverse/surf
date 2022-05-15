@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('api_keys', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unsigned();
+        Schema::create('themes', function (Blueprint $table) {
+            $table->id();
             $table->string('name');
-            $table->string('key', 60)->default('')->unique('api_tokens_token_unique');
-            $table->dateTime('last_used_at')->nullable();
+            $table->string('folder')->unique();
+            $table->boolean('active')->default(0);
+            $table->string('version')->default('');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('api_keys');
+        Schema::dropIfExists('themes');
     }
 };
