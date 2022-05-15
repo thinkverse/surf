@@ -4,11 +4,12 @@ namespace Wave\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
 use TCG\Voyager\Models\Role;
-use Wave\PaddleSubscription;
+use Wave\Subscription;
 use Wave\Plan;
 use Wave\User;
 
@@ -66,7 +67,7 @@ class SubscriptionController extends Controller
     }
 
     private function cancelSubscription($subscription_id){
-        $subscription = PaddleSubscription::where('subscription_id', $subscription_id)->first();
+        $subscription = Subscription::where('subscription_id', $subscription_id)->first();
         $subscription->cancelled_at = Carbon::now();
         $subscription->status = 'cancelled';
         $subscription->save();
@@ -78,7 +79,7 @@ class SubscriptionController extends Controller
 
     public function checkout(Request $request){
 
-        //PaddleSubscriptions
+        //Subscriptions
         $response = Http::get($this->paddle_checkout_url . '/1.0/order?checkout_id=' . $request->checkout_id);
         $status = 0;
         $message = '';
@@ -132,7 +133,7 @@ class SubscriptionController extends Controller
                     $user->role_id = $plan->role_id;
                     $user->save();
 
-                    $subscription = PaddleSubscription::create([
+                    $user->subscription()->create([
                         'subscription_id' => $order->subscription_id,
                         'plan_id' => $order->product_id,
                         'user_id' => $user->id,
@@ -140,7 +141,7 @@ class SubscriptionController extends Controller
                         'last_payment_at' => $subscription->last_payment->date,
                         'next_payment_at' => $subscription->next_payment->date,
                         'cancel_url' => $subscription->cancel_url,
-                        'update_url' => $subscription->update_url
+                        'update_url' => $subscription->update_url,
                     ]);
 
                     $status = 1;

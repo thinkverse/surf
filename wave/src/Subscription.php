@@ -4,7 +4,7 @@ namespace Wave;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PaddleSubscription extends Model
+class Subscription extends Model
 {
     /**
      * The attributes that are mass assignable.

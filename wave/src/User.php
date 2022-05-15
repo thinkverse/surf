@@ -11,7 +11,7 @@ use Lab404\Impersonate\Models\Impersonate;
 use TCG\Voyager\Models\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Wave\Announcement;
-use Wave\PaddleSubscription;
+use Wave\Subscription;
 use Wave\Plan;
 
 class User extends Authenticatable implements JWTSubject, MustVerifyEmail
@@ -103,7 +103,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     }
 
     public function subscription(){
-        return $this->hasOne(PaddleSubscription::class);
+        return $this->hasOne(Subscription::class);
     }
 
 

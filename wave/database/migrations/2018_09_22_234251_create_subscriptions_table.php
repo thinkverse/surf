@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('subscription_id')->unique();
-            $table->foreignId('plan_id')->nullable()->constrained();
+            $table->foreignId('plan_id')->nullable();
             $table->foreignId('user_id')->nullable()->constrained();
             $table->string('status')->nullable();
             $table->string('update_url')->nullable();
