@@ -79,21 +79,11 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
     {
         $plan = Plan::firstWhere('slug', $plan);
 
-        if ($this->hasRole('admin')) {
+        if ($this->hasRole('admin') && $plan?->default) {
             return true;
         }
 
-        if ($plan) {
-            if ($plan->default) {
-                return true;
-            }
-
-            if ($this->hasRole($plan->slug)) {
-                return true;
-            }
-        }
-
-        return false;
+        return $this->hasRole($plan?->slug);
     }
 
     public function subscriber()

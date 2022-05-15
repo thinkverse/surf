@@ -196,7 +196,7 @@ class SubscriptionController extends Controller
             $response = Http::post($this->paddle_vendors_url . '/2.0/subscription/users/update', [
                 'vendor_id' => $this->vendor_id,
                 'vendor_auth_code' => $this->vendor_auth_code,
-                'subscription_id' => $request->user()->subscription->subscription_id,
+                'subscription_id' => $request->user()->subscription?->subscription_id,
                 'plan_id' => $request->plan_id,
             ]);
 
