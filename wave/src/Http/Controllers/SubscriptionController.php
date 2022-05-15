@@ -8,6 +8,7 @@ use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use TCG\Voyager\Models\Role;
 use Wave\Subscription;
 use Wave\Plan;
@@ -23,7 +24,8 @@ class SubscriptionController extends Controller
     private $vendor_id;
     private $vendor_auth_code;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->vendor_auth_code = config('wave.paddle.auth_code');
         $this->vendor_id = config('wave.paddle.vendor');
 
@@ -32,7 +34,8 @@ class SubscriptionController extends Controller
     }
 
 
-    public function webhook(Request $request){
+    public function webhook(Request $request)
+    {
 
         // Which alert/event is this request for?
         $alert_name = $request->alert_name;
@@ -41,7 +44,7 @@ class SubscriptionController extends Controller
 
 
         // Respond appropriately to this request.
-        switch($alert_name) {
+        switch ($alert_name) {
 
             case 'subscription_created':
                 break;
@@ -58,26 +61,28 @@ class SubscriptionController extends Controller
                 return response()->json(['status' => 1]);
                 break;
         }
-
     }
 
-    public function cancel(Request $request){
+    public function cancel(Request $request)
+    {
         $this->cancelSubscription($request->id);
         return response()->json(['status' => 1]);
     }
 
-    private function cancelSubscription($subscription_id){
+    private function cancelSubscription($subscription_id)
+    {
         $subscription = Subscription::where('subscription_id', $subscription_id)->first();
         $subscription->cancelled_at = Carbon::now();
         $subscription->status = 'cancelled';
         $subscription->save();
-        $user = User::find( $subscription->user_id );
+        $user = User::find($subscription->user_id);
         $cancelledRole = Role::where('name', '=', 'cancelled')->first();
         $user->role_id = $cancelledRole->id;
         $user->save();
     }
 
-    public function checkout(Request $request){
+    public function checkout(Request $request)
+    {
 
         //Subscriptions
         $response = Http::get($this->paddle_checkout_url . '/1.0/order?checkout_id=' . $request->checkout_id);
@@ -85,15 +90,15 @@ class SubscriptionController extends Controller
         $message = '';
         $guest = (auth()->guest()) ? 1 : 0;
 
-        if( $response->successful() ){
+        if ($response->successful()) {
             $resBody = json_decode($response->body());
 
-            if(isset($resBody->order)){
+            if (isset($resBody->order)) {
                 $order = $resBody->order;
 
                 $plans = Plan::all();
 
-                if($order->is_subscription && $plans->contains('plan_id', $order->product_id) ){
+                if ($order->is_subscription && $plans->contains('plan_id', $order->product_id)) {
 
                     $subscriptionUser = Http::post($this->paddle_vendors_url . '/2.0/subscription/users', [
                         'vendor_id' => $this->vendor_id,
@@ -104,9 +109,9 @@ class SubscriptionController extends Controller
                     $subscriptionData = json_decode($subscriptionUser->body());
                     $subscription = $subscriptionData->response[0];
 
-                    if(auth()->guest()){
+                    if (auth()->guest()) {
 
-                        if(User::where('email', $subscription->user_email)->exists()){
+                        if (User::where('email', $subscription->user_email)->exists()) {
                             $user = User::where('email', $subscription->user_email)->first();
                         } else {
                             // create a new user
@@ -122,7 +127,6 @@ class SubscriptionController extends Controller
 
                             Auth::login($user);
                         }
-
                     } else {
                         $user = auth()->user();
                     }
@@ -148,29 +152,28 @@ class SubscriptionController extends Controller
                 } else {
 
                     $message = 'Error locating that subscription product id. Please contact us if you think this is incorrect.';
-
                 }
             } else {
 
                 $message = 'Error locating that order. Please contact us if you think this is incorrect.';
             }
-
         } else {
             $message = $response->serverError();
         }
 
         return response()->json([
-                    'status' => $status,
-                    'message' => $message,
-                    'guest' => $guest
-                ]);
+            'status' => $status,
+            'message' => $message,
+            'guest' => $guest
+        ]);
     }
 
-    public function invoices(User $user){
+    public function invoices(User $user)
+    {
 
         $invoices = [];
 
-        if(isset($user->subscription->subscription_id)){
+        if (isset($user->subscription->subscription_id)) {
             $response = Http::post($this->paddle_vendors_url . '/2.0/subscription/payments', [
                 'vendor_id' => $this->vendor_id,
                 'vendor_auth_code' => $this->vendor_auth_code,
@@ -182,36 +185,41 @@ class SubscriptionController extends Controller
         }
 
         return $invoices;
-
     }
 
-    public function switchPlans(Request $request){
-        $plan = Plan::where('plan_id', $request->plan_id)->first();
+    public function switchPlans(Request $request)
+    {
+        $plan = Plan::firstWhere('plan_id', $request->plan_id);
 
-        if(isset($plan->id)){
-
-
+        if ($plan) {
             // Update the user plan with Paddle
             $response = Http::post($this->paddle_vendors_url . '/2.0/subscription/users/update', [
                 'vendor_id' => $this->vendor_id,
                 'vendor_auth_code' => $this->vendor_auth_code,
-                'subscription_id' => auth()->user()->subscription->subscription_id,
-                'plan_id' => $request->plan_id
+                'subscription_id' => $request->user()->subscription->subscription_id,
+                'plan_id' => $request->plan_id,
             ]);
 
-            // Next, update the user role associated with the updated plan
-            auth()->user()->role_id = $plan->role_id;
-            auth()->user()->save();
+            if ($response->successful()) {
+                $body = $response->json();
 
-            if($response->successful()){
-                return back()->with(['message' => 'Successfully switched to the ' . $plan->name . ' plan.', 'message_type' => 'success']);
+                if ($body['success']) {
+                    // Next, update the user role associated with the updated plan
+                    $request->user()->forceFill([
+                        'role_id' => $plan->role_id,
+                    ])->save();
+
+                    // And, update the subscription with the updated plan.
+                    $request->user()->subscription()->update([
+                        'plan_id' => $request->plan_id,
+                        'next_payment_at' => $body['response']['next_payment']['date'],
+                    ]);
+
+                    return back()->with(['message' => 'Successfully switched to the ' . $plan->name . ' plan.', 'message_type' => 'success']);
+                }
             }
-
         }
 
         return back()->with(['message' => 'Sorry, there was an issue updating your plan.', 'message_type' => 'danger']);
-
-
     }
-
 }
