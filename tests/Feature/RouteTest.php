@@ -1,17 +1,13 @@
 <?php
 
-test('available routes', function ($url) {
-    $response = $this->get($url);
+use App\Models\User;
 
-    $response->assertStatus(200);
+it('can access available route', function ($route) {
+    $this->get($route)->assertOk();
 })->with('routes');
 
-test('available auth routes', function ($url) {
-    $user = \App\Models\User::find(1);
+it('can access available auth route', function ($route) {
+    $this->actingAs(User::first());
 
-    $this->actingAs($user);
-
-    $response = $this->get($url);
-
-    $response->assertStatus(200);
+    $this->get($route)->assertOk();
 })->with('authroutes');
