@@ -54,11 +54,11 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
 
     public function keyValues()
     {
-        return $this->morphMany('Wave\KeyValue', 'keyvalue');
+        return $this->morphMany(KeyValue::class, 'key_value');
     }
 
     public function keyValue($key){
-        return $this->morphMany('Wave\KeyValue', 'keyvalue')->where('key', '=', $key)->first();
+        return $this->morphMany(KeyValue::class, 'key_value')->where('key', '=', $key)->first();
     }
 
     public function profile($key){

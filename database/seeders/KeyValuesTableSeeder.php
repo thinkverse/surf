@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class WaveKeyValuesTableSeeder extends Seeder
+class KeyValuesTableSeeder extends Seeder
 {
     /**
      * Auto generated seed file
@@ -14,15 +14,15 @@ class WaveKeyValuesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('wave_key_values')->delete();
+        DB::table('key_values')->delete();
 
-        DB::table('wave_key_values')->insert(array(
+        DB::table('key_values')->insert(array(
             0 =>
             array(
                 'id' => 10,
                 'type' => 'text_area',
-                'keyvalue_id' => 1,
-                'keyvalue_type' => 'users',
+                'key_value_id' => 1,
+                'key_value_type' => 'users',
                 'key' => 'about',
                 'value' => 'Hello I am the admin user. You can update this information in the edit profile section. Hope you enjoy using Wave.',
             ),

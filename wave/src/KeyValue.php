@@ -4,12 +4,9 @@ namespace Wave;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 class KeyValue extends Model
 {
-	protected $table = 'wave_key_values';
-
- 	public $timestamps = false;
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -18,13 +15,13 @@ class KeyValue extends Model
      */
     protected $fillable = [
         'type',
-        'keyvalue_id',
-        'keyvalue_type',
         'key',
         'value',
+        'key_value_id',
+        'key_value_type',
     ];
 
-    public function keyvalue()
+    public function keyValue()
     {
         return $this->morphTo();
     }

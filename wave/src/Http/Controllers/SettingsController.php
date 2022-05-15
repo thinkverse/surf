@@ -50,12 +50,12 @@ class SettingsController extends Controller
 	            $value = $this->getContentBasedOnType($request, 'themes', $row);
 
 	    		if(!is_null($authed_user->keyValue($key))){
-	    			$keyValue = KeyValue::where('keyvalue_id', '=', $authed_user->id)->where('keyvalue_type', '=', 'users')->where('key', '=', $key)->first();
+	    			$keyValue = KeyValue::where('key_value_id', '=', $authed_user->id)->where('key_value_type', '=', 'users')->where('key', '=', $key)->first();
 	    			$keyValue->value = $value;
 	    			$keyValue->type = $request->{$type};
 	    			$keyValue->save();
 	    		} else {
-	    			KeyValue::create(['type' => $request->{$type}, 'keyvalue_id' => $authed_user->id, 'keyvalue_type' => 'users', 'key' => $key, 'value' => $value]);
+	    			KeyValue::create(['type' => $request->{$type}, 'key_value_id' => $authed_user->id, 'key_value_type' => 'users', 'key' => $key, 'value' => $value]);
 	    		}
 	    	}
     	}

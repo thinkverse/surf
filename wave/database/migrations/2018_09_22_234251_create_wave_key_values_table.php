@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('wave_key_values', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('key_values', function (Blueprint $table) {
+            $table->id();
             $table->string('type');
-            $table->integer('keyvalue_id')->unsigned();
-            $table->string('keyvalue_type');
             $table->string('key');
             $table->string('value');
-            $table->unique(['keyvalue_id', 'keyvalue_type', 'key']);
+            $table->numericMorphs('key_value');
         });
     }
 
@@ -31,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wave_key_values');
+        Schema::dropIfExists('key_values');
     }
 };
