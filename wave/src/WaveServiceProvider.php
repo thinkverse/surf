@@ -8,6 +8,11 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
+use Wave\Http\Middleware\Cancelled;
+use Wave\Http\Middleware\InstallMiddleware;
+use Wave\Http\Middleware\TokenMiddleware;
+use Wave\Http\Middleware\TrialEnded;
+use Wave\Http\Middleware\VerifyPaddleWebhookMiddleware;
 
 class WaveServiceProvider extends ServiceProvider
 {
@@ -19,18 +24,15 @@ class WaveServiceProvider extends ServiceProvider
 
         $this->loadLivewireComponents();
 
-        $waveMiddleware = [
-            \Illuminate\Auth\Middleware\Authenticate::class,
-            \Wave\Http\Middleware\TrialEnded::class,
-            \Wave\Http\Middleware\Cancelled::class,
-        ];
+        $this->app->router->aliasMiddleware('verify_webhook', VerifyPaddleWebhookMiddleware::class);
+        $this->app->router->aliasMiddleware('token_api', TokenMiddleware::class);
 
-        $this->app->router->aliasMiddleware('verify_webhook', \Wave\Http\Middleware\VerifyPaddleWebhookMiddleware::class);
-        $this->app->router->aliasMiddleware('token_api', \Wave\Http\Middleware\TokenMiddleware::class);
-        $this->app->router->pushMiddlewareToGroup('web', \Wave\Http\Middleware\WaveMiddleware::class);
-        $this->app->router->pushMiddlewareToGroup('web', \Wave\Http\Middleware\InstallMiddleware::class);
+        $this->app->router->pushMiddlewareToGroup('web', InstallMiddleware::class);
 
-        $this->app->router->middlewareGroup('wave', $waveMiddleware);
+        $this->app->router->middlewareGroup('wave', [
+            TrialEnded::class,
+            Cancelled::class,
+        ]);
     }
 
     public function boot(Router $router, Dispatcher $event)
