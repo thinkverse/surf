@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class UsersTableSeeder extends Seeder
 {
@@ -17,11 +18,17 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->delete();
 
-        User::factory()->create([
+        $attributes = collect([
             'name' => 'Wave Admin',
             'email' => 'admin@admin.com',
             'username' => 'admin',
             'role_id' => 1,
         ]);
+
+        if (Storage::disk('public')->exists('avatars/admin.png')) {
+            $attributes->put('avatar', 'avatars/admin.png');
+        }
+
+        User::factory()->create($attributes->toArray());
     }
 }
