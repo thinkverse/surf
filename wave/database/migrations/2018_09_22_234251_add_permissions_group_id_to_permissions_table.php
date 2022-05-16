@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('permission_group_id')->nullable()->constrained();
         });
     }
+
     /**
      * Reverse the migrations.
      *
