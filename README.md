@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Surf, the opinionated Software as a Service Starter Kit that can help you build your next great idea 💰. Suft is fork off [Wave](https://devdojo.com/wave), and is built with [Laravel](https://laravel.com), [Voyager](https://voyager.devdojo.com), [TailwindCSS](https://tailwindcss.com), and a few other awesome technologies. Here are some of the awesome features ✨:
+Surf, the opinionated Software as a Service Starter Kit that can help you build your next great idea 💰. Surf is fork off [Wave](https://devdojo.com/wave), and is built with [Laravel](https://laravel.com), [Voyager](https://voyager.devdojo.com), [TailwindCSS](https://tailwindcss.com), and a few other awesome technologies. Here are some of the awesome features ✨:
 
  - [Authentication](https://wave.devdojo.com/docs/features/authentication)
  - [User Profiles](https://wave.devdojo.com/docs/features/user-profiles)
@@ -99,7 +99,7 @@ That's it! You will now be able to visit your URL and see your Surf application 
 
 ## Watch, Learn, and Build
 
-DevDojo got a full video series on how you can setup, build, and configure Wave, which is the underlying starter kit Suft is made from. You can watch first few videos for free, and additional videos will require a [DevDojo Pro](https://devdojo.com/pro) subscription. By subscribing to a [DevDojo Pro](https://devdojo.com/pro) subscription you will also be supporting the ongoing development of this project. It's a win win! 🙌
+DevDojo got a full video series on how you can setup, build, and configure Wave, which is the underlying starter kit Surf is made from. You can watch first few videos for free, and additional videos will require a [DevDojo Pro](https://devdojo.com/pro) subscription. By subscribing to a [DevDojo Pro](https://devdojo.com/pro) subscription you will also be supporting the ongoing development of this project. It's a win win! 🙌
 
 [Click here to watch the Wave Video Series](https://devdojo.com/course/wave).
 
