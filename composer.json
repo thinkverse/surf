@@ -20,6 +20,7 @@
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.4",
         "tcg/voyager": "1.5.x-dev",
+        "thinkverse/well-known": "^1.0",
         "tymon/jwt-auth": "@dev"
     },
     "require-dev": {
