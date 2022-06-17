@@ -29,7 +29,7 @@
 				</div>
 				<div class="mt-5 sm:mt-6 sm:flex sm:flex-row-reverse">
 					<span class="flex flex-1 w-full rounded-md shadow-sm sm:ml-3 sm:w-full">
-					<div data-url="{{ auth()->user()->subscription->cancel_url }}" @click="$store.confirmCancel.open=false" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-red-600 border border-transparent rounded-md shadow-sm cursor-pointer checkout-cancel hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red sm:text-sm sm:leading-5">
+					<div data-url="{{ auth()->user()->subscription?->cancel_url }}" @click="$store.confirmCancel.open=false" class="inline-flex justify-center w-full px-4 py-2 text-base font-medium leading-6 text-white transition duration-150 ease-in-out bg-red-600 border border-transparent rounded-md shadow-sm cursor-pointer checkout-cancel hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red sm:text-sm sm:leading-5">
 						Cancel Subscription
 					</div>
 

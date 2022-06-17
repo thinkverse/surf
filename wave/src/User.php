@@ -95,7 +95,7 @@ class User extends Authenticatable implements JWTSubject, MustVerifyEmail
         $roles = $this->roles->pluck('id')->push($this->role_id)->unique();
         $plans = Plan::whereIn('role_id', $roles)->count();
 
-        return !is_null($plans);
+        return $plans > 0;
     }
 
     public function subscription()
