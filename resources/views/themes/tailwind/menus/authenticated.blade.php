@@ -33,7 +33,7 @@
                                     Watch videos to learn how to use Wave.
                                 </p>
                             </a>
-                            <a href="{{ route('wave.blog') }}" class="block px-5 py-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-xl hover:bg-gray-100">
+                            <a href="{{ route('wave.blog.index') }}" class="block px-5 py-3 -m-3 space-y-1 transition duration-150 ease-in-out rounded-xl hover:bg-gray-100">
                                 <p class="text-base font-medium leading-6 text-gray-900">
                                     From The Blog
                                 </p>
@@ -98,13 +98,13 @@
                             <span class="inline-block px-2 my-1 -ml-1 text-xs font-medium leading-5 text-gray-600 bg-gray-200 rounded">{{ auth()->user()->role->display_name }}</span>
                         </div>
                         @trial
-                            <a href="{{ route('wave.settings', 'plans') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">Upgrade My Account</a>
+                            <a href="{{ route('wave.settings.show', 'plans') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">Upgrade My Account</a>
                         @endtrial
                         @if( !auth()->guest() && auth()->user()->can('browse_admin') )
                             <a href="{{ route('voyager.dashboard') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"><i class="fa fa-bolt"></i> Admin</a>
                         @endif
                         <a href="{{ route('wave.profile', auth()->user()->username) }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">My Profile</a>
-                        <a href="{{ route('wave.settings') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">Settings</a>
+                        <a href="{{ route('wave.settings.show') }}" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900">Settings</a>
 
                     </div>
                     <div class="border-t border-gray-100"></div>

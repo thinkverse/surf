@@ -77,7 +77,7 @@
 
         @if(!isset($show_all_notifications))
             <div id="notification-footer" class="flex items-center justify-center py-3 text-xs font-medium text-gray-600 bg-gray-100 border-t border-gray-200 ">
-                <a href="{{ route('wave.notifications') }}"><span uk-icon="icon: eye"></span>View All Notifications</a>
+                <a href="{{ route('wave.notifications.index') }}"><span uk-icon="icon: eye"></span>View All Notifications</a>
             </div>
         @endif
 

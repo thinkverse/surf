@@ -12,9 +12,9 @@ class AnnouncementController extends Controller
         return view('theme::announcements.index', compact('announcements'));
     }
 
-    public function announcement($id){
+    public function show($id){
         $announcement = Announcement::find($id);
-    	return view('theme::announcements.announcement', compact('announcement'));
+    	return view('theme::announcements.show', compact('announcement'));
     }
 
     public function read(){

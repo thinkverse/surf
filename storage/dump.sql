@@ -439,7 +439,7 @@ VALUES
 	(30,1,'Announcements','/admin/announcements','_self','voyager-megaphone',NULL,NULL,9,'2018-05-20 21:08:14','2018-07-03 04:51:03',NULL,NULL),
 	(31,1,'BREAD','','_self','voyager-bread','#000000',8,4,'2018-06-22 20:53:25','2018-06-22 20:54:13','voyager.bread.index',NULL),
 	(32,1,'Plans','','_self','voyager-logbook',NULL,NULL,2,'2018-07-03 04:50:28','2018-07-03 04:51:09','voyager.plans.index',NULL),
-	(33,3,'Blog','','_self',NULL,'#000000',NULL,103,'2018-08-24 19:41:14','2018-08-24 19:41:14','wave.blog',NULL);
+	(33,3,'Blog','','_self',NULL,'#000000',NULL,103,'2018-08-24 19:41:14','2018-08-24 19:41:14','wave.blog.index',NULL);
 
 /*!40000 ALTER TABLE `menu_items` ENABLE KEYS */;
 UNLOCK TABLES;

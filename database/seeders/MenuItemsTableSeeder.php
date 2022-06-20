@@ -478,7 +478,7 @@ class MenuItemsTableSeeder extends Seeder
                 'order' => 103,
                 'created_at' => '2018-08-24 19:41:14',
                 'updated_at' => '2018-08-24 19:41:14',
-                'route' => 'wave.blog',
+                'route' => 'wave.blog.index',
                 'parameters' => NULL,
             ),
         ));

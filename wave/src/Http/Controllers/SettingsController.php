@@ -16,7 +16,7 @@ class SettingsController extends Controller
 {
     public function index($section = ''){
         if(empty($section)){
-            return redirect(route('wave.settings', 'profile'));
+            return redirect(route('wave.settings.show', 'profile'));
         }
     	return view('theme::settings.index', compact('section'));
     }
@@ -133,6 +133,9 @@ class SettingsController extends Controller
     	return $path;
     }
 
+    /**
+     * @deprecated Method not used, mark for deletion.
+     */
     public function invoice(Request $request, $invoiceId) {
         return $request->user()->downloadInvoice($invoiceId, [
             'vendor'  => setting('site.title', 'Wave'),

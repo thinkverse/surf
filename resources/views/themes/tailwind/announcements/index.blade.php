@@ -8,7 +8,7 @@
             All Announcements
         </span>
     </div>
-    
+
     <div class="max-w-4xl px-5 pb-20 mx-auto prose prose-xl lg:prose-2xl lg:px-0">
 
         <h1>Announcements</h1>
@@ -17,7 +17,7 @@
 
             @foreach($announcements as $announcement)
 
-                <a href="{{ route('wave.announcement', $announcement->id) }}">{{ $announcement->title }}</a>
+                <a href="{{ route('wave.announcements.show', $announcement->id) }}">{{ $announcement->title }}</a>
                 <span class="block mt-0 text-gray-600">{{ $announcement->description }}</span>
 
             @endforeach
