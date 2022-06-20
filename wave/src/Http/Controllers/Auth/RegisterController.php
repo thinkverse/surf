@@ -132,7 +132,6 @@ class RegisterController extends Controller
      */
     public function complete(Request $request)
     {
-
         if (setting('auth.username_in_registration') && setting('auth.username_in_registration') == 'yes') {
             $request->validate([
                 'name' => 'required|string|min:3|max:255',

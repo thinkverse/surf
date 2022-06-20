@@ -19,7 +19,8 @@ use Wave\Subscription;
  */
 class User extends Authenticatable implements JWTSubject, MustVerifyEmail
 {
-    use Notifiable, Impersonate;
+    use Notifiable;
+    use Impersonate;
 
     /**
      * The attributes that are mass assignable.

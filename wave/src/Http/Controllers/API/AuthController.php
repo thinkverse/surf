@@ -51,27 +51,25 @@ class AuthController extends Controller
         return response()->json(['message' => 'Successfully logged out']);
     }
 
-    public function token(){
+    public function token()
+    {
         $request = app('request');
 
-        if(isset($request->key)){
-
+        if (isset($request->key)) {
             $key = ApiKey::where('key', '=', $request->key)->first();
 
             $key->update([
                 'last_used_at' => Carbon::now(),
             ]);
 
-            if(isset($key->id)){
+            if (isset($key->id)) {
                 return response()->json(['access_token' => JWTAuth::fromUser($key->user, ['exp' => config('wave.api.key_token_expires', 1)])]);
             } else {
                 abort('400', 'Invalid Api Key');
             }
-
         } else {
             abort('401', 'Unauthorized');
         }
-
     }
 
     /**
@@ -126,7 +124,6 @@ class AuthController extends Controller
         }
 
         return $this->respondWithToken($token);
-
     }
 
     protected function validator(array $data)

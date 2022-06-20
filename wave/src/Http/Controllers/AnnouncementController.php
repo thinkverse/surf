@@ -7,23 +7,26 @@ use Wave\Announcement;
 
 class AnnouncementController extends Controller
 {
-    public function index(){
-    	$announcements = Announcement::paginate(10);
+    public function index()
+    {
+        $announcements = Announcement::paginate(10);
         return view('theme::announcements.index', compact('announcements'));
     }
 
-    public function show($id){
+    public function show($id)
+    {
         $announcement = Announcement::find($id);
-    	return view('theme::announcements.show', compact('announcement'));
+        return view('theme::announcements.show', compact('announcement'));
     }
 
-    public function read(){
-    	$user = auth()->user();
-    	$announcements = Announcement::all();
-    	foreach($announcements as $announcement){
-            if(!$user->announcements()->where('id', $announcement->id)->exists()){
-    		  $user->announcements()->attach($announcement->id);
+    public function read()
+    {
+        $user = auth()->user();
+        $announcements = Announcement::all();
+        foreach ($announcements as $announcement) {
+            if (!$user->announcements()->where('id', $announcement->id)->exists()) {
+                $user->announcements()->attach($announcement->id);
             }
-    	}
+        }
     }
 }

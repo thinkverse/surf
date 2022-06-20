@@ -18,7 +18,8 @@ class Security extends Component
         ];
     }
 
-    public function save(){
+    public function save()
+    {
         $this->validate();
 
         auth()->user()->forceFill([
@@ -30,7 +31,6 @@ class Security extends Component
 
         // Clear the input fields
         $this->current_password = $this->password = $this->password_confirmation = "";
-
     }
 
     public function render()

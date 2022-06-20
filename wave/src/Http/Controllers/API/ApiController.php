@@ -12,13 +12,13 @@ use TCG\Voyager\Models\DataType;
 
 class ApiController extends Controller
 {
+    use BreadRelationshipParser;
 
     public function __construct()
     {
         $this->middleware('auth:api');
     }
 
-	use BreadRelationshipParser;
     //*********************************************
     //               ____
     //              |  _ \
@@ -35,28 +35,26 @@ class ApiController extends Controller
     {
         $dataType = Datatype::where('slug', '=', $slug)->first();
 
-    	$authorized = auth()->user()->can('browse', app($dataType->model_name));
+        $authorized = auth()->user()->can('browse', app($dataType->model_name));
 
-    	if(!$authorized){
-    		abort(403, 'Unauthorized');
-    	}
+        if (!$authorized) {
+            abort(403, 'Unauthorized');
+        }
 
-    	// Next Get or Paginate the actual content from the MODEL that corresponds to the slug DataType
+        // Next Get or Paginate the actual content from the MODEL that corresponds to the slug DataType
         if (strlen($dataType->model_name) != 0) {
+            $model = app($dataType->model_name);
+            $query = $model::select('*');
 
-	    	$model = app($dataType->model_name);
-	        $query = $model::select('*');
+            $relationships = $dataType->getRelationships([], $dataType);
 
-	        $relationships = $dataType->getRelationships([], $dataType);
+            // If a column has a relationship associated with it, we do not want to show that field
+            $this->removeRelationshipField($dataType, 'browse');
 
-	        // If a column has a relationship associated with it, we do not want to show that field
-	        $this->removeRelationshipField($dataType, 'browse');
+            $dataTypeContent = call_user_func([$query->with($relationships)->orderBy($model->getKeyName(), 'DESC'), 'paginate']);
 
-	        $dataTypeContent = call_user_func([$query->with($relationships)->orderBy($model->getKeyName(), 'DESC'), 'paginate']);
-
-	        $dataTypeContent = $this->resolveRelations($dataTypeContent, $dataType);
-
-	    } else {
+            $dataTypeContent = $this->resolveRelations($dataTypeContent, $dataType);
+        } else {
             // If Model doesn't exist, get data from table name
             $dataTypeContent = call_user_func([DB::table($dataType->name), $getter]);
             $model = false;
@@ -64,7 +62,6 @@ class ApiController extends Controller
 
         return response()->json($dataTypeContent);
     }
-
 
     //*********************************************
     //                _____
@@ -107,7 +104,6 @@ class ApiController extends Controller
         $isModelTranslatable = is_bread_translatable($dataTypeContent);
 
         return response()->json($dataTypeContent);
-
     }
 
     //*********************************************
@@ -124,7 +120,6 @@ class ApiController extends Controller
 
     public function edit(Request $request, $slug, $id)
     {
-
         $slug = $this->getSlug($request);
 
         $dataType = Datatype::where('slug', '=', $slug)->first();
@@ -138,21 +133,19 @@ class ApiController extends Controller
         // Check permission
         $this->authorize('edit', $data);
 
-        if(!$this->isValidJson($request->getContent())){
+        if (!$this->isValidJson($request->getContent())) {
             abort('400', 'Invalid JSON structure.');
         }
 
 
         $data = $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
 
-        if(isset($data)){
+        if (isset($data)) {
             return response()->json(['success' => true, 'data' => $data]);
-        } else{
+        } else {
             abort('400', 'Could not update content, error with data received');
         }
-
     }
-
 
     //*********************************************
     //
@@ -176,20 +169,18 @@ class ApiController extends Controller
         // Check permission
         $this->authorize('add', app($dataType->model_name));
 
-        if(!$this->isValidJson($request->getContent())){
+        if (!$this->isValidJson($request->getContent())) {
             abort('400', 'Invalid JSON structure.');
         }
 
         $data = $this->insertUpdateData($request, $slug, $dataType->addRows, new $dataType->model_name());
 
-        if(isset($data)){
+        if (isset($data)) {
             return response()->json(['success' => true, 'data' => $data]);
-        } else{
+        } else {
             abort('400', 'Could not add content, error with data received');
         }
-
     }
-
 
     //*********************************************
     //                _____
@@ -218,7 +209,6 @@ class ApiController extends Controller
         if ($res) {
             return response()->json(['success' => true, 'message' => 'Successfully deleted']);
         }
-
     }
 
     public function getSlug(Request $request)
@@ -234,14 +224,12 @@ class ApiController extends Controller
 
     public function insertUpdateData($request, $slug, $rows, $data)
     {
-
         foreach ($rows as $row) {
-
             $options = $row->details;
 
             $content = $this->getContentBasedOnType($request, $slug, $row, $options);
 
-            if(isset($request->{$row->field})){
+            if (isset($request->{$row->field})) {
                 $data->{$row->field} = $content;
             }
         }
@@ -256,9 +244,9 @@ class ApiController extends Controller
         return (new Text($request, $slug, $row, $options))->handle();
     }
 
-    private function isValidJson($string) {
-     json_decode($string);
-     return (json_last_error() == JSON_ERROR_NONE);
+    private function isValidJson($string)
+    {
+        json_decode($string);
+        return (json_last_error() == JSON_ERROR_NONE);
     }
-
 }

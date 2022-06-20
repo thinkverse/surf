@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 
 final class VerifyPaddleWebhookMiddleware
 {
-    const SIGNATURE_KEY = 'p_signature';
+    public const SIGNATURE_KEY = 'p_signature';
 
     /**
      * Handle an incoming request.

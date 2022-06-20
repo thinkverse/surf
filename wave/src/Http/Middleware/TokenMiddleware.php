@@ -11,7 +11,6 @@ use Illuminate\Contracts\Auth\Factory as Auth;
 
 class TokenMiddleware
 {
-
     protected $auth;
 
     public function __construct(Auth $auth)
@@ -29,16 +28,14 @@ class TokenMiddleware
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if($request->token && strlen($request->token) <= 60){
+        if ($request->token && strlen($request->token) <= 60) {
             $api_token = ApiToken::where('token', '=', $request->token)->first();
-            if(isset($api_token->id)){
+            if (isset($api_token->id)) {
                 $token = JWTAuth::fromUser($api_token->user);
             }
-
         } else {
             $this->auth->authenticate();
         }
-
 
         //Then process the next request if every tests passed.
         return $next($request);

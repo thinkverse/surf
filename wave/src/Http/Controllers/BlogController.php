@@ -8,21 +8,21 @@ use Wave\Post;
 
 class BlogController extends Controller
 {
-    public function index(){
-
+    public function index()
+    {
         $posts = Post::orderBy('created_at', 'DESC')->paginate(6);
         $categories = Category::all();
 
-    	$seo = [
-    		'seo_title' => 'Blog',
+        $seo = [
+            'seo_title' => 'Blog',
             'seo_description' => 'Our Blog',
-       	];
+        ];
 
-    	return view('theme::blog.index', compact('posts', 'categories', 'seo'));
+        return view('theme::blog.index', compact('posts', 'categories', 'seo'));
     }
 
-    public function category($slug){
-
+    public function category($slug)
+    {
         $category = Category::where('slug', '=', $slug)->firstOrFail();
         $posts = $category->posts()->orderBy('created_at', 'DESC')->paginate(6);
         $categories = Category::all();
@@ -35,15 +35,15 @@ class BlogController extends Controller
         return view('theme::blog.index', compact('posts', 'category', 'categories', 'seo'));
     }
 
-    public function post($category, $slug){
-
-    	$post = Post::where('slug', '=', $slug)->firstOrFail();
+    public function post($category, $slug)
+    {
+        $post = Post::where('slug', '=', $slug)->firstOrFail();
 
         $seo = [
             'seo_title' => $post->title,
             'seo_description' => $post->seo_description,
         ];
 
-    	return view('theme::blog.post', compact('post', 'seo'));
+        return view('theme::blog.post', compact('post', 'seo'));
     }
 }
