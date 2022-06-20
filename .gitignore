@@ -24,3 +24,6 @@ yarn-error.log
 .DS_Store
 /wave/vendor/
 /public/wave/docs
+
+# Surf ignores.
+/tools/php-cs-fixer/vendor/
