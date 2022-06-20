@@ -27,3 +27,4 @@ yarn-error.log
 
 # Surf ignores.
 /tools/php-cs-fixer/vendor/
+.php-cs-fixer.cache
