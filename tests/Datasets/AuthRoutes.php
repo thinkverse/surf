@@ -48,7 +48,7 @@ dataset('authroutes', function () {
         '/admin/users/create',
         '/admin/users/1',
         '/admin/users/1/edit',
-        '/announcement/1',
+        '/announcements/1',
         '/announcements',
         '/dashboard',
         '/notifications',
