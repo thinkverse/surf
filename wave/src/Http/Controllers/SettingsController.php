@@ -94,9 +94,13 @@ class SettingsController extends Controller
 
     public function apiPost(Request $request)
     {
-        $request->validate([
-            'key_name' => 'required'
+        $validator = Validator::make($request->all(), [
+            'key_name' => 'required',
         ]);
+
+        if ($validator->fails()) {
+            return back()->with(['message' => $validator->errors()->first(), 'message_type' => 'danger']);
+        }
 
         $apiKey = auth()->user()->createApiKey(Str::slug($request->key_name));
         if (isset($apiKey->id)) {
