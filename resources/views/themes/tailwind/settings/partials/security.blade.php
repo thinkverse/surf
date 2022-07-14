@@ -4,21 +4,21 @@
 		<div>
 			<label for="current_password" class="block text-sm font-medium leading-5 text-gray-700">Current Password</label>
 			<div class="mt-1 rounded-md shadow-sm">
-				<input id="current_password" type="password" name="current_password" placeholder="Current Password" class="w-full form-input">
+				<input id="current_password" required type="password" name="current_password" placeholder="Current Password" class="w-full form-input">
 			</div>
 		</div>
 
 		<div class="mt-5">
 			<label for="password" class="block text-sm font-medium leading-5 text-gray-700">New Password</label>
 			<div class="mt-1 rounded-md shadow-sm">
-				<input id="password" type="password" name="password" placeholder="New Password" class="w-full form-input">
+				<input id="password" required type="password" name="password" placeholder="New Password" class="w-full form-input">
 			</div>
 		</div>
 
 		<div class="mt-5">
 			<label for="password_confirmation" class="block text-sm font-medium leading-5 text-gray-700">Confirm New Password</label>
 			<div class="mt-1 rounded-md shadow-sm">
-				<input id="password_confirmation" type="password" name="password_confirmation" placeholder="Confirm New Password" class="w-full form-input">
+				<input id="password_confirmation" required type="password" name="password_confirmation" placeholder="Confirm New Password" class="w-full form-input">
 			</div>
 		</div>
 

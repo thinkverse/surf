@@ -3,7 +3,7 @@
 		<div>
 			<label for="key_name" class="block text-sm font-medium leading-5 text-gray-700">Create a new API Key</label>
 			<div class="mt-1 rounded-md shadow-sm">
-				<input id="key_name" type="text" name="key_name" placeholder="Key Name" class="w-full form-input">
+				<input id="key_name" required type="text" name="key_name" placeholder="Key Name" class="w-full form-input">
 			</div>
 		</div>
 
